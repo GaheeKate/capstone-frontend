@@ -15,7 +15,11 @@ const Welcome = () => {
       <h1>Welcome!</h1>
 
       <p>
-        <Link to="/dash/notes">View techNotes</Link>
+        <Link to="/dash/notes">View Notes</Link>
+      </p>
+
+      <p>
+        <Link to="/dash/results">View Results Settings</Link>
       </p>
 
       <p>

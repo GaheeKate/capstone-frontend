@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function QuestionData() {
   const [questions, setQuestions] = useState([]); // State variable to store the questions
@@ -57,7 +58,7 @@ export default function QuestionData() {
   if (showResultPage) {
     return (
       <div>
-        <h2>Result Page</h2>
+        <h2 >Result Page</h2>
         <p>Total Answer Weight: {currentAnswerWeight}</p>
       </div>
     );
@@ -69,13 +70,13 @@ export default function QuestionData() {
     <div>
       <h2 className="ui header">
         <i className="whmcs icon"></i>
-        <div className="content">Question List</div>
+        <div className="content danger">Question List</div>
       </h2>
       <div key={currentQuestion._id}>
         <h3>{currentQuestion.qu}</h3>
         <ul>
           {currentQuestion.answers.map((answer) => (
-            <li key={answer.qu}>
+            <li key={answer._id}>
               <label>
                 <input
                   type="radio"
@@ -91,10 +92,11 @@ export default function QuestionData() {
         </ul>
       </div>
       {currentQuestionIndex < questions.length && (
-        <button onClick={handleNextQuestion} disabled={isNextButtonDisabled}>
+        <button className="btn btn-danger" onClick={handleNextQuestion} disabled={isNextButtonDisabled}>
           Next
         </button> // Display "Next" button if there are more questions
       )}
     </div>
   );
 }
+

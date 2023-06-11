@@ -240,7 +240,17 @@ ul {
   content: "➜ "
 }
 
+.imgmax{
+  margin: 20px;
+  max-width: 600px !important;
+  max-height: 600px !important;
 
+}
+
+.card{
+  max-width: 1200px !important;
+  max-height: 1200px !important;
+}
 
 .spin {
   animation: spinAnimation 1s ease-in-out;

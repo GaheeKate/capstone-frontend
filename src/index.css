@@ -15,7 +15,7 @@
   --COLOR: #FFF;
   --ERROR: firebrick;
   --INACTIVE: lightgray;
-  --LINK-COLOR: whitesmoke;
+  --LINK-COLOR: black;
   --LINK-HOVER: rgba(245, 245, 245, 0.9);
   --NOTE-BGCOLOR: hsla(240, 10%, 75%, 0.65);
   --STATUS-COMPLETE: limegreen;
@@ -106,8 +106,22 @@ h3 {
   color: transparent !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
+  padding: 1em !important;
 }
 
+p{
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  padding: 2em !important;
+  color: hsla(0, 3%, 8%, 0.911);
+  margin-left: 1em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: left;
+  transition: .3s;
+}
 /* DEFAULTS */
 /* =============================================== */
 body {
@@ -466,6 +480,43 @@ tr {
   .icon-button {
     font-size: 1.5rem;
   }
+
+  h3 {
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    background-image: linear-gradient(to left, #4112c4, #5da8e2) !important;
+    color: transparent !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    padding: 1em !important;
+  }
+
+  .rad-label {
+    display: flex;
+    align-items: center;
+  
+    border-radius: 50px;
+    padding: 7px 8px;
+    margin: 5px 0;
+  
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .rad-text {
+    color: hsl(0, 0%, 60%);
+    margin-left: 7px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: left;
+    transition: .3s;
+  }
+
+  .card-body{
+    padding: 1em !important;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -499,4 +550,15 @@ tr {
   .form__action-buttons {
     position: static;
   }
+
+  h3 {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+    background-image: linear-gradient(to left, #4112c4, #5da8e2) !important;
+    color: transparent !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    padding: 0.5em !important;
+  }
+
 }

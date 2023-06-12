@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function QuestionData() {
   const [questions, setQuestions] = useState([]);
@@ -7,33 +7,10 @@ export default function QuestionData() {
   const [currentAnswerWeight, setCurrentAnswerWeight] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(0);
   const [showResultPage, setShowResultPage] = useState(false);
-  const [results, setResults] = useState([]);
-  const [images, setImages] = useState({});
+
+  const navigate = useNavigate(); // Hook for programmatic navigation
 
   useEffect(() => {
-    const importImages = async () => {
-      const imagePaths = {
-        "ani-1": import("../img/img/ani-1.jpg"),
-        "ani-2": import("../img/img/ani-2.jpg"),
-        "ani-3": import("../img/img/ani-3.jpg"),
-        "ani-4": import("../img/img/ani-4.jpg"),
-        "ani-5": import("../img/img/ani-5.jpg"),
-        "ani-6": import("../img/img/ani-6.jpg"),
-        "ani-7": import("../img/img/ani-7.jpg"),
-        "ani-8": import("../img/img/ani-8.jpg"),
-        "ani-9": import("../img/img/ani-9.jpg"),
-        "ani-10": import("../img/img/ani-10.jpg"),
-      };
-
-      const importedImages = {};
-
-      for (const imageName in imagePaths) {
-        importedImages[imageName] = (await imagePaths[imageName]).default;
-      }
-
-      setImages(importedImages); // Update the images state with the imported images
-    };
-
     const fetchData = async () => {
       try {
         const questionResponse = await fetch(
@@ -46,11 +23,6 @@ export default function QuestionData() {
         );
         const answerData = await answerResponse.json();
 
-        const resultResponse = await fetch(
-          `${process.env.REACT_APP_BASEURL}/results`
-        );
-        const resultData = await resultResponse.json();
-
         const updatedQuestions = questionData.map((question) => {
           const associatedAnswers = answerData.filter(
             (answer) => answer.qu === question.num
@@ -59,14 +31,12 @@ export default function QuestionData() {
         });
 
         setQuestions(updatedQuestions);
-        setResults(resultData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-    importImages(); // Import images when the component mounts
   }, []);
 
   const handleAnswerSelect = (questionId, answerValue) => {
@@ -75,18 +45,19 @@ export default function QuestionData() {
   };
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1); // Increment the current question index
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     const updatedWeight = currentAnswerWeight + selectedAnswer;
-    const scaledWeight = scaleWeight(updatedWeight, 10, 30, 10, 19); // Scale the answer weight from 10-30 to 10-19
-    setCurrentAnswerWeight(scaledWeight); // Update the scaled answer weight
-    setSelectedAnswer(""); // Reset the selected answer
+    const scaledWeight = scaleWeight(updatedWeight, 10, 30, 10, 19);
+    setCurrentAnswerWeight(scaledWeight);
+    setSelectedAnswer("");
 
     if (currentQuestionIndex === 9) {
-      setShowResultPage(true); // Show the result page when reaching the last question
+      // Redirect to the result page with currentAnswerWeight as a state parameter
+      navigate("/Result", { state: { userResult: currentAnswerWeight } });
+      return;
     }
   };
 
-  // Function to scale a value from one range to another range
   const scaleWeight = (value, minInput, maxInput, minOutput, maxOutput) => {
     const scaledValue =
       ((value - minInput) / (maxInput - minInput)) * (maxOutput - minOutput) +
@@ -94,34 +65,11 @@ export default function QuestionData() {
     return Math.round(scaledValue);
   };
 
-  if (questions.length === 0 || results.length === 0) {
+  if (questions.length === 0) {
     return <div>Loading...</div>;
   }
 
   const currentQuestion = questions[currentQuestionIndex];
-
-  if (showResultPage) {
-    const matchingResults = results.filter(
-      (result) => currentAnswerWeight === result.weight
-    );
-
-    return (
-      <div className="card">
-        {console.log("Total Answer Weight:" + currentAnswerWeight)}
-        {matchingResults.map((result) => (
-          <div key={result._id}>
-            <h3 className="card-header">{result.name}</h3>
-            <img
-              className="imgmax rounded mx-auto d-block"
-              src={images[result.imgId]}
-              alt={result.name}
-            />
-            <p className="rad-text">{result.desc}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
 
   const isNextButtonDisabled = selectedAnswer === "";
 

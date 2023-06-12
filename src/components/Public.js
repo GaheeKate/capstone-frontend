@@ -29,7 +29,7 @@ const Public = () => {
             <p>
               Discover your animal sign based on your personality traits. Our
               unique assessment measures your preferences across four categories
-              to determine your animal sign:
+              to determine your animal sign
             </p>
             <div className="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
               <Link to="/QuestionData" onClick={handleClick}>
@@ -46,6 +46,7 @@ const Public = () => {
 
       <footer>
         <Link to="/login">Login</Link>
+        <Link to="/signup">signup</Link>
       </footer>
     </section>
   );

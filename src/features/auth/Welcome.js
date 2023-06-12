@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
 
 const Welcome = () => {
-  const { username, isManager, isAdmin } = useAuth();
+  const { username, isUser, isAdmin } = useAuth();
 
   useTitle(`techNotes: ${username}`);
 
@@ -19,21 +19,23 @@ const Welcome = () => {
 
       <h1>Welcome {username}!</h1>
 
-      <p>
-        <Link to="/dash/notes">View My result</Link>
-      </p>
-
-      <p>
-        <Link to="/dash/notes/new">Add New result</Link>
-      </p>
-
-      {(isManager || isAdmin) && (
+      {isUser && (
+        <p>
+          <Link to="/dash/notes">View My result</Link>
+        </p>
+      )}
+      {isUser && (
+        <p>
+          <Link to="/dash/notes/new">Add New result</Link>
+        </p>
+      )}
+      {isAdmin && (
         <p>
           <Link to="/dash/users">View User Settings</Link>
         </p>
       )}
 
-      {(isManager || isAdmin) && (
+      {isAdmin && (
         <p>
           <Link to="/dash/users/new">Add New User</Link>
         </p>

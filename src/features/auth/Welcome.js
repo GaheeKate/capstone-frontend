@@ -26,7 +26,7 @@ const Welcome = () => {
       )}
       {isUser && (
         <p>
-          <Link to="/dash/notes/new">Add New result</Link>
+          <Link to="/dash/notes/new">Save My result</Link>
         </p>
       )}
       {isAdmin && (

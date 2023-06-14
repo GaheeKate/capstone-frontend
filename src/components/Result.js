@@ -63,7 +63,12 @@ export default function Result() {
             src={images[result.imgId]}
             alt={result.name}
           />
-          <p className="rad-text">{result.desc}</p>
+          <div className="card-body text-center">
+            <p className="rad-text">{result.desc}</p>
+            <Link className="btn btn-danger" to="/questionData">
+              Start Again
+            </Link>
+          </div>
         </div>
       ))}
     </div>

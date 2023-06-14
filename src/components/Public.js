@@ -45,8 +45,10 @@ const Public = () => {
       </main>
 
       <footer>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">signup</Link>
+        <div className="d-flex justify-content-between">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">signup</Link>
+        </div>
       </footer>
     </section>
   );

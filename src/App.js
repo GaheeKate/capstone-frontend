@@ -54,7 +54,7 @@ function App() {
               <Route path="notes">
                 <Route index element={<NotesList />} />
                 <Route path=":id" element={<EditNote />} />
-                <Route path="new" element={<NewNote />} />
+                <Route path=":id" element={<NewNote />} />
               </Route>
             </Route>
             {/* End Dash */}

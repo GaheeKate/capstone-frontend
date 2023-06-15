@@ -10,7 +10,8 @@ const useAuth = () => {
 
   if (token) {
     const decoded = jwtDecode(token);
-    const { username, roles } = decoded.UserInfo;
+    console.log(decoded.UserInfo);
+    const { _id: userId, username, roles } = decoded.UserInfo;
 
     isUser = roles.includes("User");
     isAdmin = roles.includes("Admin");
@@ -18,9 +19,10 @@ const useAuth = () => {
     if (isUser) status = "User";
     if (isAdmin) status = "Admin";
 
-    return { username, roles, status, isUser, isAdmin };
+    return { userId, username, roles, status, isUser, isAdmin };
   }
 
   return { username: "", roles: [], isUser, isAdmin, status };
 };
+
 export default useAuth;

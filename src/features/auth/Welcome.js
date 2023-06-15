@@ -3,9 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
 
 const Welcome = () => {
-  const { username, isUser, isAdmin } = useAuth();
-
-  useTitle(`techNotes: ${username}`);
+  const { userId, username, isUser, isAdmin } = useAuth();
+  useTitle(`WELCOME: ${username}`);
 
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-US", {
@@ -13,7 +12,7 @@ const Welcome = () => {
     timeStyle: "long",
   }).format(date);
 
-  const content = (
+  return (
     <section className="welcome">
       <p>{today}</p>
 
@@ -21,14 +20,15 @@ const Welcome = () => {
 
       {isUser && (
         <p>
-          <Link to="/dash/notes">View My result</Link>
+          <Link to="/dash/Result">View My Result</Link>
         </p>
       )}
       {isUser && (
         <p>
-          <Link to="/dash/notes/new">Save My result</Link>
+          <Link to={`/dash/users/${userId}`}>Save My Result</Link>
         </p>
       )}
+
       {isAdmin && (
         <p>
           <Link to="/dash/users">View User Settings</Link>
@@ -42,7 +42,6 @@ const Welcome = () => {
       )}
     </section>
   );
-
-  return content;
 };
+
 export default Welcome;

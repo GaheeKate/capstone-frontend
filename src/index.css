@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* VARIABLES */
@@ -15,9 +16,9 @@
   --COLOR: #FFF;
   --ERROR: firebrick;
   --INACTIVE: lightgray;
-  --LINK-COLOR: black;
+  --LINK-COLOR: white;
   --LINK-HOVER: rgba(245, 245, 245, 0.9);
-  --NOTE-BGCOLOR: hsla(240, 10%, 75%, 0.65);
+  --RESULT-BGCOLOR: hsla(240, 10%, 75%, 0.65);
   --STATUS-COMPLETE: limegreen;
   --STATUS-OPEN: firebrick;
   --TABLE-BGCOLOR: #FFF;
@@ -61,7 +62,7 @@
 /* GENERAL STYLES */
 
 body {
-  font-family: 'Nunito', sans-serif;
+  
   min-height: 100vh;
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
@@ -86,7 +87,7 @@ select {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a,
@@ -127,13 +128,10 @@ p{
 body {
   display: grid;
   place-content: center;
-
   min-height: 100vh;
   margin: 0;
   padding: 40px;
   box-sizing: border-box;
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif;
 }
 
 .card-body{
@@ -378,25 +376,6 @@ tr {
   background-color: var(--INACTIVE);
 }
 
-/* NOTE */
-
-.note__created,
-.note__updated,
-.note__username {
-  display: none;
-}
-
-.note__status {
-  font-weight: bold;
-}
-
-.note__status--open {
-  color: var(--STATUS-OPEN);
-}
-
-.note__status--completed {
-  color: var(--STATUS-COMPLETE);
-}
 
 
 /* FORM - GENERAL */
@@ -537,15 +516,7 @@ tr {
     font-size: 1.5rem;
   }
 
-  .table--notes {
-    grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
-  }
 
-  .note__created,
-  .note__updated,
-  .note__username {
-    display: block
-  }
 
   .form__action-buttons {
     position: static;

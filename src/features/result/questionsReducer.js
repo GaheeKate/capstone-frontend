@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const questionsSlice = createSlice({
-  name: 'questions',
+  name: "questions",
   initialState: [],
   reducers: {
     setQuestions: (state, action) => {

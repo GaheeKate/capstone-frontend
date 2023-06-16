@@ -58,11 +58,11 @@ export default function Result() {
   );
 
   return (
-    <div>
+    <div className="container">
       <div className="card">
         {console.log("Total Answer Weight:" + userResult)}
         {matchingResults.map((result) => (
-          <div key={result._id}>
+          <div className="card" key={result._id}>
             <h3 className="card-header">{result.name}</h3>
             <div className="card-header text-end">
               <button
@@ -77,7 +77,7 @@ export default function Result() {
               </button>
             </div>
             <img
-              className="imgmax rounded mx-auto d-block"
+              className="img-fluid imgmax rounded mx-auto d-block"
               src={images[result.imgId]}
               alt={result.name}
             />
@@ -93,3 +93,4 @@ export default function Result() {
     </div>
   );
 }
+

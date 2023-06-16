@@ -1,7 +1,7 @@
 # Personality Check: AnimalTrait
 
 
-## A web application that generates your animal sign based on a series of questions and your answers. This application is built using the MERN stack (MongoDB, Express.js, React.js, Node.js) and is designed to be responsive, providing an optimal user experience across different devices.
+## A web application that generates your animal sign based on a series of questions and your answers. This application is built using the MERN stack (MongoDB, Express.js, React.js, Node.js) and is designed to be responsive.
 
 ### Features
 - Questionnaire: Answer a set of questions to determine your animal sign.

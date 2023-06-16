@@ -26,7 +26,7 @@ const Welcome = () => {
       {isUser && (
         <p>
           <Link className="link-danger" to={`/dash/users/${userId}`}>
-            Save My Result
+            Edit my Info
           </Link>
         </p>
       )}

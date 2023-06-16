@@ -8,7 +8,7 @@ export default function QuestionData() {
   const [selectedAnswer, setSelectedAnswer] = useState(0);
   const [showResultPage, setShowResultPage] = useState(false);
 
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,13 +47,16 @@ export default function QuestionData() {
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     const updatedWeight = currentAnswerWeight + selectedAnswer;
-    const scaledWeight = scaleWeight(updatedWeight, 10, 30, 10, 19);
-    setCurrentAnswerWeight(scaledWeight);
-    setSelectedAnswer("");
+    setCurrentAnswerWeight(updatedWeight);
 
+    console.log(currentAnswerWeight, selectedAnswer, updatedWeight);
+
+    setSelectedAnswer("");
     if (currentQuestionIndex === 9) {
+      const sacled = scaleWeight(updatedWeight, 10, 30, 10, 19);
       // Redirect to the result page with currentAnswerWeight as a state parameter
-      navigate("/Result", { state: { userResult: currentAnswerWeight } });
+      navigate("/Result", { state: { userResult: sacled } });
+
       return;
     }
   };

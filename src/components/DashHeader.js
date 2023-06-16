@@ -7,7 +7,6 @@ const DashHeader = () => {
         <Link to="/dash">
           <h1 className="dash-header__title">My page</h1>
         </Link>
-        <nav className="dash-header__nav">{/* add nav buttons later */}</nav>
       </div>
     </header>
   );

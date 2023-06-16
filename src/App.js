@@ -4,6 +4,7 @@ import Public from "./components/Public";
 import Login from "./features/auth/Login";
 import QuestionData from "./components/Question";
 import Result from "./components/Result";
+import SavedResult from "./components/savedResult";
 import DashLayout from "./components/DashLayout";
 import Welcome from "./features/auth/Welcome";
 import UsersList from "./features/users/UsersList";
@@ -25,6 +26,7 @@ function App() {
         <Route index element={<Public />} />
         <Route path="QuestionData" element={<QuestionData />} />
         <Route path="Result" element={<Result />} />
+        <Route path="savedResult" element={<SavedResult />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignupUserForm />} />
 

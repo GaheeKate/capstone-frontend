@@ -29,6 +29,10 @@ const EditUserForm = ({ user }) => {
   const [roles, setRoles] = useState(user.roles);
   const [active, setActive] = useState(user.active);
 
+  // Retrieve the value from local storage
+  const Totalresult = localStorage.getItem("Totalresult");
+  console.log("Passed result: " + Totalresult);
+
   useEffect(() => {
     setValidUsername(USER_REGEX.test(username));
   }, [username]);
@@ -154,6 +158,7 @@ const EditUserForm = ({ user }) => {
           id="result"
           name="result"
           type="number"
+          value={Totalresult}
           autoComplete="off"
           onChange={onResultChanged}
         />

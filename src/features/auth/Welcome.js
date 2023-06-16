@@ -20,12 +20,14 @@ const Welcome = () => {
 
       {isUser && (
         <p>
-          <Link to="/dash/Result">View My Result</Link>
+          <Link to="/savedResult">View My Result</Link>
         </p>
       )}
       {isUser && (
         <p>
-          <Link to={`/dash/users/${userId}`}>Save My Result</Link>
+          <Link className="link-danger" to={`/dash/users/${userId}`}>
+            Save My Result
+          </Link>
         </p>
       )}
 

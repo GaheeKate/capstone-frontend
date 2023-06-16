@@ -62,7 +62,8 @@
 /* GENERAL STYLES */
 
 body {
-  
+  display: grid;
+  place-content: center;
   min-height: 100vh;
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
@@ -71,6 +72,10 @@ body {
   background-position: top right;
   background-blend-mode: multiply;
 }
+
+
+
+
 
 input,
 button,
@@ -125,14 +130,7 @@ p{
 }
 /* DEFAULTS */
 /* =============================================== */
-body {
-  display: grid;
-  place-content: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 40px;
-  box-sizing: border-box;
-}
+
 
 .card-body{
   padding: 2em !important;
@@ -279,7 +277,7 @@ ul {
 
 
 
-/* DASH HEADER, CONTAINER & FOOTER */
+/* DASH HEADER, CONTAINER  */
 
 .dash-header {
   position: sticky;
@@ -307,27 +305,9 @@ ul {
 .dash-container {
   padding: 0.75em 0.5em 0.5em;
   flex-grow: 1;
+  max-height: 800px;
 }
 
-.dash-footer {
-  font-size: 1rem;
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-  background-color: var(--BGCOLOR);
-  padding: 0.5em;
-  border-top: 1px solid var(--BORDER-COLOR);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  gap: 1em;
-}
-
-.dash-footer__button {
-  font-size: 1rem;
-  width: auto;
-  height: auto;
-}
 
 
 /* TABLES - GENERAL */

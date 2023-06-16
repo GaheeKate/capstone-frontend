@@ -6,11 +6,11 @@ export default function Result() {
   const [results, setResults] = useState([]);
   const [images, setImages] = useState({});
   const location = useLocation();
-  const userResult = location.state?.userResult;
   const navigate = useNavigate();
 
-  // Save the value to local storage
-  localStorage.setItem("Totalresult", userResult);
+  // Retrieve the value from local storage
+  const Totalresult = localStorage.getItem("Totalresult");
+  console.log("Passed result: " + Totalresult);
 
   // console.log(userResult);
   useEffect(() => {
@@ -54,28 +54,15 @@ export default function Result() {
   }, []);
 
   const matchingResults = results.filter(
-    (result) => userResult === parseInt(result.weight)
+    (result) => parseInt(Totalresult) === parseInt(result.weight)
   );
 
   return (
     <div>
       <div className="card">
-        {console.log("Total Answer Weight:" + userResult)}
         {matchingResults.map((result) => (
           <div key={result._id}>
             <h3 className="card-header">{result.name}</h3>
-            <div className="card-header text-end">
-              <button
-                className="btn btn-light"
-                onClick={() =>
-                  navigate("/login", {
-                    state: { userResult: userResult },
-                  })
-                }
-              >
-                Login to save
-              </button>
-            </div>
             <img
               className="imgmax rounded mx-auto d-block"
               src={images[result.imgId]}
@@ -83,13 +70,13 @@ export default function Result() {
             />
             <div className="card-body text-center">
               <p className="rad-text">{result.desc}</p>
-              <Link className="btn btn-danger" to="/questionData">
-                Start Again
-              </Link>
             </div>
           </div>
         ))}
       </div>
+      <footer>
+        <div className=""></div>
+      </footer>
     </div>
   );
 }

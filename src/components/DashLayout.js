@@ -1,16 +1,17 @@
-import { Outlet } from 'react-router-dom'
-import DashHeader from './DashHeader'
-import DashFooter from './DashFooter'
+import { Link, Outlet } from "react-router-dom";
+import DashHeader from "./DashHeader";
 
 const DashLayout = () => {
-    return (
-        <>
-            <DashHeader />
-            <div className="dash-container">
-                <Outlet />
-            </div>
-            <DashFooter />
-        </>
-    )
-}
-export default DashLayout
+  return (
+    <>
+      <DashHeader />
+      <div className="dash-container">
+        <Outlet />
+      </div>
+      <div className="">
+        <Link to={"/"}>Back to home</Link>
+      </div>
+    </>
+  );
+};
+export default DashLayout;

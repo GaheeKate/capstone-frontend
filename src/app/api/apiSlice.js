@@ -2,8 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
+  //baseurl for all API requests
   baseUrl: "https://capstone-mern.onrender.com",
+  //request should include credentials (cookies,HTTP authentication etc)
   credentials: "include",
+  //prepares the request headers, including adding an authorization header with a bearer token
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
 
@@ -14,6 +17,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+//This function used as a wrapper around the base query. makes basQuery to perform the actual API request and assigns the result to the result variable.
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   // console.log(args) // request url, method, body
   // console.log(api) // signal, dispatch, getState()
@@ -21,7 +25,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
   let result = await baseQuery(args, api, extraOptions);
 
-  // If you want, handle other status codes, too
+  // If the result has the error status of forbidden, it means the access token has expired
   if (result?.error?.status === 403) {
     console.log("sending refresh token");
 
